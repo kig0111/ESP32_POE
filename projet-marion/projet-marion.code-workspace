@@ -1,0 +1,15 @@
+{
+    "folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "serial:/COM4",
+			"uri": "serial://com4/"
+		},
+		{
+			"name": "projet_V2",
+			"path": "../projet_V2"
+		}
+	]
+}

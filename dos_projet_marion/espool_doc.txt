@@ -1,0 +1,8 @@
+site : https://micropython.org/download/OLIMEX_ESP32_POE/
+
+pip install esptool
+python -m esptool --chip esp32 --port COM4 erase_flash
+python -m esptool --chip esp32 --port COM4 --baud 460800 write_flash -z 0x1000 OLIMEX_ESP32_POE-20230426-v1.20.0.bin      (derniere version)
+python -m esptool --chip esp32 --port COM4 --baud 460800 write_flash -z 0x1000 Desktop\dos_projet_marion\OLIMEX_ESP32_POE-20230621-unstable-v1.20.0-230-g41c91422f.bin      (avant-derniere version) 
+python -m esptool --chip esp32 --port COM4 --baud 460800 write_flash -z 0x1000 Downloads\esp32-idf3-20210202-v1.14.bin (V1.14) 
+python -m esptool --chip esp32 --port COM4 --baud 460800 write_flash -z 0x1000 Desktop\dos_projet_marion\esp32-poe-iso.bin (V1.18) 
