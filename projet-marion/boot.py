@@ -8,6 +8,8 @@ import ubinascii
 import gc
 import ntpchu
 import publisher
+from config_IP import * 
+from local_config import * 
 from os import uname
 
 gc.collect()
@@ -29,7 +31,8 @@ def do_connect():
 
     sta_if = network.LAN(network.STA_IF)
     sta_if.active(True)
-    sta_if.ifconfig(('x.x.x.31','255.255.255.0','x.x.x.1','x.x.x.10'))  #tuple (ip, subnet, gateway, dns)
+    print(IP_ESP32, MASK_ESP32, GW_ESP32, DNS_ESP32) 
+    sta_if.ifconfig((IP_ESP32, MASK_ESP32, GW_ESP32, DNS_ESP32))  #tuple (ip, subnet, gateway, dns)
     time.sleep(2)
     print('LAN config: ',lan.ifconfig())
     print(' MAC : ', ubinascii.hexlify(network.LAN().config('mac'),':').decode())

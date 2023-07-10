@@ -1,6 +1,8 @@
 # local file
 webrepl_cfg.py
 *.db
+local_config.py
+config_IP.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
