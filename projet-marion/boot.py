@@ -31,7 +31,6 @@ def do_connect():
 
     sta_if = network.LAN(network.STA_IF)
     sta_if.active(True)
-    print(IP_ESP32, MASK_ESP32, GW_ESP32, DNS_ESP32) 
     sta_if.ifconfig((IP_ESP32, MASK_ESP32, GW_ESP32, DNS_ESP32))  #tuple (ip, subnet, gateway, dns)
     time.sleep(2)
     print('LAN config: ',lan.ifconfig())
