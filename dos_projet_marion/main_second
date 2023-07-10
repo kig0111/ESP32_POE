@@ -1,0 +1,32 @@
+"""
+import _thread
+import time
+
+def th_func(delay, id):
+    while True:
+        time.sleep(delay)
+        print('Running thread %d' % id)
+
+for i in range(2):
+    _thread.start_new_thread(th_func, (i + 1, i)) """ 
+
+import serial
+import time 
+
+ser = serial.Serial('COM3', 38400, timeout=0.5)
+
+fichier = open("C:/Users/drbstag/Desktop/dos_projet_marion/data_incubateur.bin", "r")
+
+def envoi_rs232():
+    """if ser.isOpen():
+        print(ser.name + ' is open…')
+        print(ser.get_settings()) #Grace a ces 3 lignes lorsque le Port est ouvert c’est indiqué dans le LOG """
+    #for y in range(0,3):
+    while True: 
+        res = fichier.read(1)
+        print(res)
+        ser.write(str.encode(res)) 
+        time.sleep(0.02) 
+
+
+envoi_rs232() 
