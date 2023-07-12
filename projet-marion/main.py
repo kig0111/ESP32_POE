@@ -175,7 +175,7 @@ def envoi_serveur(data):
         verif(data)
         time.sleep(0.5)"""
         
-
+  
 
 #notre main
 #while True: 

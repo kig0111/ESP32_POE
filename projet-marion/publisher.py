@@ -10,7 +10,7 @@ SERVER = "10.83.102.24"
 CLIENT_ID = ubinascii.hexlify(machine.unique_id())  #id de l'ESP32 
 TOPIC = 'trame_complete'    #nom du serveur 
 username="pub_client"
-PASSWORD="%mqtt%"
+PASSWORD="%mqtt%"  
 
 #reset l'ESP32 
 def reset():
