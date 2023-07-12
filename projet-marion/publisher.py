@@ -8,7 +8,7 @@ from umqtt.simple import MQTTClient
 
 SERVER = "10.83.102.24"
 CLIENT_ID = ubinascii.hexlify(machine.unique_id())  #id de l'ESP32 
-TOPIC = 'test_topic'    #nom du serveur 
+TOPIC = 'trame_complete'    #nom du serveur 
 username="pub_client"
 PASSWORD="%mqtt%"
 

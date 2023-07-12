@@ -52,9 +52,3 @@ while OK:
 
 #mise à l'heure de l'ESP32 
 ntpchu.settime()
-
-#def ntp_chu():
-
-    #print("{dt[0]}-{dt[1]:02}-{dt[2]:02}T{dt[4]:02}:{dt[5]:02}:{dt[6]:02}.{dt[7]:02}")
-
-#ntp_chu()

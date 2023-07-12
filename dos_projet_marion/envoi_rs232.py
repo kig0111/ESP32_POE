@@ -1,7 +1,7 @@
 import serial 
 import time
 
-ser = serial.Serial(port="COM3", baudrate=9600, timeout=1, parity="O", stopbits=1) 
+ser = serial.Serial(port="COM3", baudrate=38400, timeout=1, parity="O", stopbits=1) 
 #ser.open()
 
 #MSG = [1B,51,36,43]  #b'12340D'
@@ -41,7 +41,7 @@ if line == b'\x1bQ6C':
         print("envoi 4")
         line = reception_rs232()
         print("donnees recues :: ",line)
-        if line == b"\x01R01'PC Medibus Core Agent'01.01:04.00B9": 
+        if line == b"\x01R01'PC Medibus Core Agent'01.06:06.00B9": 
             print("initialisation terminee")
 #time.sleep(2)
 #ser.write(b'1B 51 36 43')
