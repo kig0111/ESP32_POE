@@ -110,12 +110,13 @@ def set_checksum(stream):
 def envoi_serveur(data): 
     now = time.localtime()
     date = "{}/{:02d}/{:02d} {:02d}:{:02d}:{:02d}".format(now[0], now[1], now[2], now[3], now[4], now[5])       #bon format de la date 
+    print(publisher.TOPIC,  "  ", date,  "  ", data)
     publisher.publication(publisher.TOPIC, ubinascii.hexlify(machine.unique_id()) + "|" + date + "|" + data)    #trame complete 
-    time.sleep(0.1)
+    time.sleep(10)
 
 
-#notre main
-time.sleep(5)
+#A DECOMMENTER POUR FONCTIONNEMENT REEL !!!!!!!
+"""time.sleep(5)
 print("Début")
 data = reception_rs232()
 if data != b" ":    #b" " = quand le temps a été dépassé (15sec) 
@@ -130,5 +131,18 @@ if INITIALISATION == True:
         else: 
             envoi_serveur(data)
             time.sleep(0.5)
-        time.sleep(0.5)
+        time.sleep(0.5)"""
 
+import random
+while True: 
+    data = b'$6530.86631.66C 18 6D33.36E   0C2 0.8E4 176EC  55F1   5F3 101C6'
+    data1 = data[0:16]
+    data3 = data[18:]
+    time.sleep(0.5)
+    humidite = data[16:18]
+    humidite = random.randrange(10,30)
+    #hum = humidite.to_bytes(2,'hum')
+    print(humidite)
+    hum = "{:02d}".format(humidite)
+    data = data1 + hum + data3
+    envoi_serveur(data)

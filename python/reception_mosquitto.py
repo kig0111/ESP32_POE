@@ -29,7 +29,7 @@ import re
 
 # vérification de l' existence de la BDD sinon, on la crée
 
-database = 'C:/Users/drbstag/Desktop/BDD/rea_V3.db'
+database = 'C:/Users/drbstag/Desktop/BDD/rea_V4.db'
 sql_create_donnees_table = """ CREATE TABLE IF NOT EXISTS donnees (
                                     id integer PRIMARY KEY,
                                     unique_id text NOT NULL,
@@ -66,7 +66,7 @@ cursor = conn.cursor()
 
 
 SERVEUR = "B2003880"
-msg = {'topic':"test_topic", 'payload':"", 'qos':0, 'retain':False}
+msg = {'topic':"trame_complete", 'payload':"", 'qos':0, 'retain':False}
        
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -76,7 +76,7 @@ def on_connect(client, userdata, flags, rc):
     # reconnect then subscriptions will be renewed.
     # client.subscribe("$SYS/#")
     client.subscribe("test_topic")  #récupération des données du serveur "test_topic"
-    client.subscribe("test_romu")
+    client.subscribe("trame_complete")
 
 i = 0 
 res = ""
