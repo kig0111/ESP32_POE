@@ -1,7 +1,7 @@
 ## ESP32_POE
 data transfert from an ESP32-POE-ISO to a DB over MQTT protocol
 
-# Projet NEONAT : stocker les données de l'incubateur dans une base de données 
+# Projet NEONAT 
 
 Le but de ce projet est de récupérer les données des incubateurs en réanimation néonatale (Dräger Babyleo TN500) afin de les stocker dans une base donnée exploitable. 
 
