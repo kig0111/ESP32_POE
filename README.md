@@ -20,7 +20,8 @@ Tous les programmes en micropython se trouvent dans le dossier "projet-marion", 
     - main.py : initialisation de la communication entre l'incub et l'esp32, lecture des données sur rs232 + envoi de la trame complète sur le serveur mqtt - boot.py : se connecte à l'Ethernet et commence un        webrepl, appel de la fonction ntpchu, connection au serveur (appel de publisher.py)
     - publisher.py : envoie un message précis au serveur mqtt
     - ntpchu.py : mise à l'heure de l'ESP32 pour l'horodatage correct (date + heure)
-3. Python
+     
+  2. Python
     - envoi_bdd.py : créé une base de données 
     - reception_mosquitto.py : analyse les trames du serveur et rempli la base de données 
 
