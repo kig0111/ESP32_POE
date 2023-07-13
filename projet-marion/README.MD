@@ -1,4 +1,5 @@
-Projet NEONAT : stocker les données de l'incubateur dans une base de données 
+Projet NEONAT : stocker les données de l'incubateur dans une base d
+                                                      <--------------- b'\x1bR6D' : demande d'identfication 
 
 Le micropython inséré dans l'ESP32 est la version V1.14, le lien pour le télécharger est dans le fichier esptool_doc.txt avec la marche à suivre pour l'injecter dans l'ESP32. 
 
@@ -13,3 +14,14 @@ Programmes utilisés :
 La mise à l'heure de l'ESP32 peut mettre du temps, c'est normal, la connection au serveur aussi
 
 La base de donnée est créée en python. Elle est d'abord analysée, puis envoyée sur la base de donnée. Les programmes se trouvent dans le dossier Python : envoi_bdd.py et reception_mosquitto.py sont utilisés et analyse_donnees est un programme de test. 
+
+                                                    INITIALISATION COMMUNICATION : 
+                                                ESP32                            TN500
+                                                      <---------------  b'x1bQ6C' : ICC : 1ere commande envoyée par l'incubateur pour démarrer la communication 
+b'\x01Q52' : l'ESP32 lui répond qu'il est prêt à communiquer ---------------------->
+                                                      <--------------- b'\x1bR6D' : demande d'identfication 
+l'appareil s'id, si on ne connait pas l'id  : b'\x01R53'     ---------------------->
+                   demande d'identification : b'\x1bR6D'     ---------------------->
+                                                      <--------------- l'incubateur s'identfie
+                                                      
+Lorsque l'incubateur envoie un NOP : b'\x1b04B cela signifie que l'incubateur attend, il envoie cette trame pour préciser que ca fait 2 secondes qu'il n'a rien reçu. 
