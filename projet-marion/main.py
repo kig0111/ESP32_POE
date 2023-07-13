@@ -178,7 +178,6 @@ def envoi_serveur(data):
   
 
 #notre main
-#while True: 
 time.sleep(5)
 print("Début")
 data = reception_rs232()
@@ -186,8 +185,6 @@ if data != b" ":
     init_demarrage(data)   
 if INITIALISATION == True:  
     print("INITIALISATION TRUE")
-    #uart1.write(set_checksum(SET + DAT)) 
-    #sent_data() 
     while True:
         uart1.write(set_checksum(SET + DAT)) 
         data = reception_rs232()
@@ -200,29 +197,3 @@ if INITIALISATION == True:
             time.sleep(0.5)
         time.sleep(0.5)
 
-
-#_thread.start_new_thread(reception_rs232, ())
-
-
-#demande des données à l'appareil 
-"""def keep_awake(timer):
-    uart1.write(set_checksum(SET+DAT))
-
-#boucle au démarage (demandes/réponses)
-def fast_start():
-    uart1.write(set_checksum(SET+ICC))
-    uart1.write(set_checksum(SET+ID))
-    uart1.write(set_checksum(GET+ICC))
-    uart1.write(set_checksum(GET+ID+WHO))
-    uart1.write(set_checksum(SET+ID))
-    uart1.write(set_checksum(GET+ICC))
-    uart1.write(set_checksum(GET+ID+WHO))
-
-#active les fonctions de récupération des données dans la pile 
-def activate():
-    timer0 = Timer(0)
-    timer0.init(period = 2000, mode = Timer.PERIODIC, callback = wask)    #Timer.init(*, mode=Timer.PERIODIC, freq=- 1, period=- 1, callback=None)
-    timer1 = Timer(1)
-    timer1.init(period = 100, mode = Timer.PERIODIC, callback = push)
-    timer2 = Timer(2)
-    timer2.init(period = 1000, mode = Timer.PERIODIC, callback = socks)"""
