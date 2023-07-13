@@ -84,15 +84,15 @@ def on_message(client, userdata, msg):
 
 
     #PST = res_data[(2+i):(6+i)].strip()   #peripheral skin temperature     #ON NE RECOIT PAS CETTE DONNEE 
-    CST = res_data[(8+i):(12+i)].strip()   #central skin temperature
-    HUMIDITE = res_data[(14+i):(17+i)].strip()
-    T_AIR = res_data[(20+i):(24+i)].strip()
-    RWP = res_data[(26+i):(30+i)].strip()   #radiant warmer power 
-    DELTA_SKIN = res_data[(32+i):(36+i)].strip()
-    LUMIERE = res_data[(38+i):(42+i)].strip()
-    NL = res_data[(44+i):(48+i)].strip()    #noise level
-    CHP = res_data[(50+i):(54+i)].strip()
-    WEIGHT_DATE = res_data[(56+i):(60+i)].strip()
+    CST = res_data[(2+i):(6+i)].strip()   #central skin temperature
+    HUMIDITE = res_data[(8+i):(12+i)].strip()
+    T_AIR = res_data[(14+i):(17+i)].strip()
+    RWP = res_data[(20+i):(24+i)].strip()   #radiant warmer power 
+    DELTA_SKIN = res_data[(26+i):(30+i)].strip()
+    LUMIERE = res_data[(32+i):(36+i)].strip()
+    NL = res_data[(38+i):(42+i)].strip()    #noise level
+    CHP = res_data[(44+i):(48+i)].strip()
+    WEIGHT_DATE = res_data[(50+i):(54+i)].strip()
 
     print("ID        :", res_unique_id )
     print("TIMESTAMP :", res_date)

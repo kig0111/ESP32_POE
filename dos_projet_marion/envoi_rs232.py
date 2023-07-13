@@ -1,3 +1,5 @@
+#tests python
+
 import serial 
 import time
 
@@ -8,10 +10,15 @@ ser = serial.Serial(port="COM3", baudrate=38400, timeout=1, parity="O", stopbits
 #MSG = bytes(MSG)
 
 #MSG = "1B 51 36 43"
-MSG = [255]
-MSG = bytearray(MSG)
+#MSG = [255]
+#MSG = bytearray(MSG)
 
-def reception_rs232():
+MSG = b'$6530.86631.66C 18 6D33.36E   0C2 0.8E4 176EC  55F1   5F3 101C6'
+
+time.sleep(1)
+serial.write(MSG)
+
+"""def reception_rs232():
     global line
     line = ser.readline()
     while line == None: 
@@ -20,11 +27,11 @@ def reception_rs232():
         except:
             print("attente d'une trame")
             time.sleep(0.2)
-    return line
+    return line"""
 
 
 #while True: 
-ser.write(b'\x1B\x51\x36\x43')
+"""ser.write(b'\x1B\x51\x36\x43')
 print("envoi 1")
 line = reception_rs232()
 print("donnees recues :: ",line)
@@ -42,7 +49,7 @@ if line == b'\x1bQ6C':
         line = reception_rs232()
         print("donnees recues :: ",line)
         if line == b"\x01R01'PC Medibus Core Agent'01.06:06.00B9": 
-            print("initialisation terminee")
+            print("initialisation terminee")"""
 #time.sleep(2)
 #ser.write(b'1B 51 36 43')
 """if line == b'\x1bQ6C': 

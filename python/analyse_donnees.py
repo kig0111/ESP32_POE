@@ -1,8 +1,8 @@
-#tests 
+#tests python
 
 import time 
 
-def traitement(donnee):
+"""def traitement(donnee):
     print("donnees : ",donnee)
     for i in range(60):
         if donnee[i:i+2] == '6C': 
@@ -22,4 +22,4 @@ def traitement(donnee):
         elif donnee[i:i+2] == 'F3': 
             print("ok, weight date") 
         else:
-            print("rien") 
+            print("rien") """
