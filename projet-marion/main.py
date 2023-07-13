@@ -37,8 +37,9 @@ def reception_rs232() :
         if time.time() < delay_attente:     
             try:
                 line = uart1.readline()  # copie d’une ligne entiere jusqu’à \r 
+                #print(line)
             except:
-                #print("attente d'une trame")
+                print("attente d'une trame")
                 time.sleep(0.5)
         else: 
             #print("delay d'attente pour l'initialisation depassee")
@@ -54,11 +55,13 @@ def init_demarrage(data):
     while boucle: 
         data = data.split(b"\r")[0]     #premiere valeur de la liste créée en enlevant le \r de la trame recue 
         if data == ICC:                 #si on a recu la demande de communication de l'incub 
+            print(data)
             uart1.write(ECHO)           #renvoi la meme trame
             time.sleep(0.1)
             data = reception_rs232()          
             data = data.split(b"\r")[0]
             if data == ASK_ID: 
+                print(data)
                 uart1.write(ID_ESP) 
                 time.sleep(0.1)
                 uart1.write(ASK_ID + b'\r')
@@ -66,6 +69,7 @@ def init_demarrage(data):
                 data = reception_rs232() 
                 data = data.split(b"\r")[0]
                 if data == ID_INCUB: 
+                    print("init fait",data)
                     INITIALISATION = True   #init faite
                     boucle = False          #on sort de la boucle while
                     time.sleep(0.5)

@@ -4,24 +4,6 @@ import sqlite3
 from pathlib import Path
 from sqlite3 import Error
  
-#database = 'C:/Users/kligliro/Documents/PYTHON/ESP32/BDD/reaneonat.db'  #emplacement bdd
-#database = 'C:/Users/drbstag/Desktop/BDD/rea.db'  #emplacement bdd
-
-"""def connexion(): 
-    if Path(path).is_file():
-        print("Le fichier existe, on l' utilise.")
-    else:
-        print("Le fichier n'existe pas, on le crée.")
-        con = sqlite3.connect(path)
-        cur = con.cursor()
-        cur.execute("CREATE TABLE donnees(id, timestamp, data)")
-        con.commit()
-
-    con = sqlite3.connect(path)
-    cur = con.cursor()
-    return cur
-
-connexion()   """ 
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -59,7 +41,6 @@ def main():
                                         id integer PRIMARY KEY,
                                         unique_id text NOT NULL,
                                         timestamp date,
-                                        T_periph text,
                                         T_centr text,
                                         humidite text,
                                         t_air text,
@@ -71,16 +52,6 @@ def main():
                                         W_date text
                                     ); """
 
-    '''sql_create_tasks_table = """CREATE TABLE IF NOT EXISTS tasks (
-                                    id integer PRIMARY KEY,
-                                    name text NOT NULL,
-                                    priority integer,
-                                    status_id integer NOT NULL,
-                                    project_id integer NOT NULL,
-                                    begin_date text NOT NULL,
-                                    end_date text NOT NULL,
-                                    FOREIGN KEY (project_id) REFERENCES projects (id)
-                                );""" '''
 
     # create a database connection
     conn = create_connection(database)

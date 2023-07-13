@@ -14,7 +14,6 @@ PASSWORD="%mqtt%"
 
 #reset l'ESP32 
 def reset():
-    print("Resetting...")
     time.sleep(5)
     machine.reset()
 
@@ -27,23 +26,23 @@ def connection_server():
     mqttClient = MQTTClient(CLIENT_ID, SERVER, user=username, password=PASSWORD, keepalive=60)
     mqttClient.set_callback(sub_cb)
     mqttClient.connect()
-    print("Connected to MQTT  Broker :: ", SERVER)
+    #print("Connected to MQTT  Broker :: ", SERVER)
 
 #fonction qu envoie le message 
 def publication(TOPIC, MSG): 
     mqttClient.publish(TOPIC, str(MSG).encode())
-    print("message envoyé")
+    #print("message envoyé")
 
 #déconnecte le serveur 
 def deconnecte():
     mqttClient.disconnect()
-    print("mqtt déconnecté")
+    #print("mqtt déconnecté")
     
     
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     try:
         connection_server()
         publication(TOPIC, "MSG_TEST")
     except OSError as e:
         print("Error: " + str(e))
-        reset()
+        reset()"""

@@ -1,4 +1,4 @@
-#
+#recoit et analyse la tram reçu 
 
 import datetime
 import random
@@ -16,7 +16,6 @@ sql_create_donnees_table = """ CREATE TABLE IF NOT EXISTS donnees (
                                     id integer PRIMARY KEY,
                                     unique_id text NOT NULL,
                                     timestamp date,
-                                    T_periph text,
                                     T_centr text,
                                     humidite text,
                                     t_air text,
@@ -69,17 +68,13 @@ def on_message(client, userdata, msg):
     global i
     print(msg.topic+" "+str(msg.payload)) 
     res = str(msg.payload).split("|")    #a chaque | on divise les caracteres 
-    #x = datetime.timetuple(2018, 5, 12, 2, 25, 50, 13)
-    #x = datetime.datetime(eval(res[1])) 
-    #print("DATE = ", x.strftime("%b %d %Y %H:%M:%S"))
     res_unique_id = res[0]
-    # res_date = datetime.fromtimestamp(int(res[1])).strftime("%Y/%d/%m %I:%M:%S")
     res_date =  res[1]
     rand = random.randrange(1000, 9999)
     res_data = res[2] + str(rand)
 
     debut = ''
-    while debut != '65': 
+    while debut != '66': 
         global i
         debut = res_data[i:i+2] 
         i = i+1
@@ -88,7 +83,7 @@ def on_message(client, userdata, msg):
     i = i - 1
 
 
-    PST = res_data[(2+i):(6+i)].strip()   #peripheral skin temperature
+    #PST = res_data[(2+i):(6+i)].strip()   #peripheral skin temperature     #ON NE RECOIT PAS CETTE DONNEE 
     CST = res_data[(8+i):(12+i)].strip()   #central skin temperature
     HUMIDITE = res_data[(14+i):(17+i)].strip()
     T_AIR = res_data[(20+i):(24+i)].strip()
@@ -102,7 +97,6 @@ def on_message(client, userdata, msg):
     print("ID        :", res_unique_id )
     print("TIMESTAMP :", res_date)
     print("DATA      :", res_data)
-    print("PST       :", PST)
     print("CST       :", CST)
     print("HUMIDITE  :", HUMIDITE)
     print("TEMP AIR  :", T_AIR)
@@ -113,12 +107,8 @@ def on_message(client, userdata, msg):
     print("CHP       :", CHP)
     print("WEIGHT DATE  :", WEIGHT_DATE)
 
-    #analyse_donnees.traitement(res_data)
-
-
-
-    sqlite_insert_query = """INSERT INTO donnees (unique_id, timestamp, T_periph, T_centr, humidite, t_air, rwp, d_skin, lum, NL, CHP, w_date)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-    valeurs = (res_unique_id, res_date, PST, CST, HUMIDITE, T_AIR, RWP, DELTA_SKIN, LUMIERE, NL, CHP, WEIGHT_DATE)   #la trame 
+    sqlite_insert_query = """INSERT INTO donnees (unique_id, timestamp, T_centr, humidite, t_air, rwp, d_skin, lum, NL, CHP, w_date)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+    valeurs = (res_unique_id, res_date, CST, HUMIDITE, T_AIR, RWP, DELTA_SKIN, LUMIERE, NL, CHP, WEIGHT_DATE)   #la trame 
 
     print("valeurs :: ",valeurs)
 

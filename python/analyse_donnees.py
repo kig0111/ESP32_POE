@@ -1,3 +1,5 @@
+#tests 
+
 import time 
 
 def traitement(donnee):

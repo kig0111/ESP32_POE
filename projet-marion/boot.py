@@ -1,4 +1,4 @@
-#se connecte au réseau Ethernet et connecte un webrepl 
+#se connecte au réseau Ethernet et connecte un webrepl et au serveur et met à l'heure l'esp32
 
 import webrepl
 import network
@@ -25,7 +25,6 @@ def do_connect():
                       mdio = machine.Pin(18), \
                       phy_type = network.PHY_LAN8720, \
                       phy_addr = 0, \
-                      #ref_clk_mode = machine.Pin.OUT) 
                       clock_mode = network.ETH_CLOCK_GPIO17_OUT)
     lan.active(1)
 
@@ -33,8 +32,8 @@ def do_connect():
     sta_if.active(True)
     sta_if.ifconfig((IP_ESP32, MASK_ESP32, GW_ESP32, DNS_ESP32))  #tuple (ip, subnet, gateway, dns)
     time.sleep(2)
-    print('LAN config: ',lan.ifconfig())
-    print(' MAC : ', ubinascii.hexlify(network.LAN().config('mac'),':').decode())
+    #print('LAN config: ',lan.ifconfig())
+    #print(' MAC : ', ubinascii.hexlify(network.LAN().config('mac'),':').decode())
     
  
 do_connect()
@@ -46,7 +45,7 @@ while OK:
         publisher.connection_server()
         OK = False
     except:
-        print("connection au serveur...")
+        #print("connection au serveur...")
         time.sleep(1)
 
 
