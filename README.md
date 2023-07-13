@@ -25,12 +25,14 @@ Tous les programmes en micropython se trouvent dans le dossier "projet-marion", 
     - reception_mosquitto.py : analyse les trames du serveur et rempli la base de données 
 
 # Initialisation communication 
-                                ESP32                                                      TN500
-                                                  <-  b'x1bQ6C' : ICC : 1ere commande envoyée par l'incubateur pour démarrer la communication 
-b'\x01Q52' : l'ESP32 lui répond qu'il est prêt à communiquer  -> 
-                                                  <- b'\x1bR6D' : demande d'identfication 
-     l'appareil s'id, si on ne connait pas l'id : b'\x01R53'  -> 
-                       b'\x1bR6D' : demande d'identfication   -> 
-                                                  <- l'incubateur s'identfie
+
+TN500 :  b'x1bQ6C' : ICC : 1ere commande envoyée par l'incubateur pour démarrer la communication 
+ESP32 :  b'\x01Q52' : l'ESP32 lui répond qu'il est prêt à communiquer 
+TN500 :  b'\x1bR6D' : demande d'identfication 
+ESP32 :  l'appareil s'id, si on ne connait pas l'id : b'\x01R53'
+ESP32 :  b'\x1bR6D' : demande d'identfication
+TN500 :  l'incubateur s'identfie
+
+Après cet échange, l'ESP32 peut demander des données spécifiques (T°, humidité, niveau de lumière, paramètrage,...).  
 
 Lorsque l'incubateur envoie un NOP : b'\x1b04B cela signifie que l'incubateur attend, il envoie cette trame pour préciser que ca fait 2 secondes qu'il n'a rien reçu.
