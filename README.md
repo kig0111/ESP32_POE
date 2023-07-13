@@ -27,12 +27,12 @@ Tous les programmes en micropython se trouvent dans le dossier "projet-marion", 
 
 # Initialisation communication 
 
-1. TN500 :  b'x1bQ6C' : ICC : 1ere commande envoyée par l'incubateur pour démarrer la communication 
-2. ESP32 :  b'\x01Q52' : l'ESP32 lui répond qu'il est prêt à communiquer 
-3. TN500 :  b'\x1bR6D' : demande d'identfication 
-4. ESP32 :  l'appareil s'id, si on ne connait pas l'id : b'\x01R53'
-5. ESP32 :  b'\x1bR6D' : demande d'identfication
-6. TN500 :  l'incubateur s'identfie
+1.   TN500 :  b'x1bQ6C' : ICC : 1ere commande envoyée par l'incubateur pour démarrer la communication 
+2.   ESP32 :  b'\x01Q52' : l'ESP32 lui répond qu'il est prêt à communiquer 
+3.   TN500 :  b'\x1bR6D' : demande d'identfication 
+4.   ESP32 :  l'appareil s'id, si on ne connait pas l'id : b'\x01R53'
+5.   ESP32 :  b'\x1bR6D' : demande d'identfication
+6.   TN500 :  l'incubateur s'identfie
 
 Après cet échange, l'ESP32 peut demander des données spécifiques (T°, humidité, niveau de lumière, paramètrage,...).  
 
