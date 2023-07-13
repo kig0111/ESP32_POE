@@ -7,7 +7,7 @@ Le but de ce projet est de récupérer les données des incubateurs en réanimat
 
 # Détails techniques 
 
-Les données de l'incubateur sont envoyées via le port série RS232 vers l'ESP32. Au démarrage, l'incubateur veut communiqer avec l'ESP32 ; c'est la phase d'initialisation, elle est nécéssaire pour pouvoir récupérer les données de l'incubateur. Par l 'ESP32 envoie alors la trame qu'il recoit sur un serveur mqtt, voici la trame envoyée : ID_ESP32 | horodatage | données reçues. Un webrepl est également mis en place pour gérer à distance l'ESP32 si besoin. Le serveur analyse et stocke les données sur une base de données grâce à un programme en Python. 
+Les données de l'incubateur sont envoyées via le port série RS232 vers l'ESP32. Au démarrage, l'incubateur veut communiqer avec l'ESP32 ; c'est la phase d'initialisation, elle est nécéssaire pour pouvoir récupérer les données de l'incubateur. Par la suite, l'ESP32 envoie la trame qu'il recoit sur un serveur mqtt, voici la trame envoyée : ID_ESP32 | horodatage | données reçues. Un webrepl est également mis en place pour gérer à distance l'ESP32 si besoin. Le serveur analyse et stocke les données sur une base de données grâce à un programme en Python. 
 Le micropython inséré dans l'ESP32 est la version V1.14, le lien pour le télécharger est dans le dossier dos_projet_marion, le fichier nommé esptool_doc.txt avec la marche à suivre pour l'injecter dans l'ESP32.
 Le logiciel utilisé est Visual Studio Code avec l'extension Pymakr pour écrire en micropython. 
 
